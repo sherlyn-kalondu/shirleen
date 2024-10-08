@@ -1,0 +1,51 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>login form</title>
+
+    </head>
+    <body>
+        <style>
+            .login-button{
+                background-color:aqua;
+                border-style:solid;
+                border-color: black;
+                border-width: 6px;
+                cursor:pointer;
+            }
+            .login-button:hover{
+                background-color: rgb(255, 8, 0);
+                color:aliceblue;
+            }
+            .cancel-button{
+                background-color: darkmagenta;
+                border-style: double;
+                border-color: chartreuse;
+                border-width:6px;
+                cursor:pointer;
+            }
+            .cancel-button:hover{
+                background-size: 10px;
+                background-color: aqua;
+                color:blueviolet;
+                border-style: dashed;
+                border-color: blue;
+            }
+            html{
+                background-color: color-mix(in srgb, rgb(17, 224, 243) 40%, yellow 60%);
+            }
+        </style>
+        <form name="login" method="post"action="login.php">
+            <h1>LOGIN FORM</h1>
+            Name:<input type="text" name="username" value="Enter your name"/>
+            <br/>
+            Password:<input type="password" name="password" value=""/>
+            <br/>
+            <button class="login-button" type="submit" name="submit" value="">😘LOGIN</button>
+            <button class="cancel-button" type="reset" name="reset">CANCEL</button>
+            <br/>
+            <a href=""reset.html>Forgot Your Password?</a>
+        </form>
+    </body>
+      <html>
