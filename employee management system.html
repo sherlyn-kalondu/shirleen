@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management System</title>
+    <style>
+        
+        body {
+            font-family: Arial;
+            margin: 0;
+            padding: 0;
+            background-color:lightsteelblue
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            
+        }
+        header {
+            background: #333;
+            color:bisque;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #77aaff 3px solid;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        nav {
+            float: right;
+            margin-top: 10px;
+        }
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        nav ul li {
+            display: inline;
+            margin-left: 5px;
+        }
+        .main {
+            padding: 20px;
+            background:#fff;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            background: #333;
+            color: bisque;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        .module {
+            margin-bottom: 20px;
+        }
+        .module h2 {
+            color: #333;
+        }
+        .module p {
+            color: #666;
+        }
+        button{
+            color:red;
+            background-color: bisque;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+            <h1 style="text-align: center;">Employee Management System</h1>
+            <h2 style="text-align: center;text-decoration-line: line-through;">KALOSH ENTERPRISES</h2>
+    </header>
+
+    <div class="container">
+        <section id="registration" class="main module">
+            <h2>Registration</h2>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name"><br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email"><br><br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password"><br><br>
+                <input type="submit" value="Register">
+            </form>
+        </section>
+
+        <section id="login" class="main module">
+            <h2>Login</h2>
+            <p>Employee login form and info
+                 <a href="login"><button>-></button></a>
+                </p>
+                <form>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email"><br><br>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password"><br><br>
+                    <input type="submit" value="Login">
+                </form>
+        </section>
+
+        <section id="finance" class="main module">
+            <h2>Finance</h2>
+            <p>Finance management details </br>
+                Download salary slip here...
+                <a href="finance"><button>-></button></a>
+            </p>
+            
+        </section>
+
+        <section id="departments" class="main module">
+            <h2>Departments</h2>
+            <p>Find Department management here.
+                <a href="departments"><button>-></button></a>
+            </p>
+        </section>
+
+        <section id="procurement" class="main module">
+            <h2>Procurement</h2>
+            <p>Find Procurement management details here.
+                <a href="procurement"><button>-></button></a>
+            </p>
+        </section>
+
+        <section id="leave" class="main module">
+            <h2>Leave</h2>
+            <p>Leave management details FORM
+                <a href="leave"><button>-></button></a>
+            </br>
+            Choose the reason for your leave, then submit the form.
+            <input type="submit" value="Submit">
+            </p>
+        </section>
+    </div>
+
+    <footer>
+        <p>KALOSH ENTERPRISES</p></br>
+        <p>Employee Management System &copy; 2024</p>
+    </footer>
+</body>
+</html>
