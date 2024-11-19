@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css"/>
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+
+    <style>
+        
+body{
+    background-color:#f9f7fe;
+}
+a{
+    color:rgb(123,3,123);
+}
+header{
+    padding:0 0 10px 0;
+    border-top:5px solid rgb(175 172 172);
+    text-align:center;
+    text-decoration:underline;
+}
+h3{
+    padding:40px 0 0 0;
+    border-top:5px solid rgb(175,172,172);
+    font-size:30px;
+    line-height:30px;
+    text-transform:capitalize;
+}
+.weather-app{
+    background-color:rgb(175, 172, 172);
+    max-width:600px;
+    margin:100px auto;
+    padding:30px;
+    border-radius:30px;
+}
+h2{
+    color:rgb(81,49,10);
+}
+.weather-app-temperature-container{
+    display:flex;
+    padding:40px 0 0 0;
+    border-top:30px solid rgb(175,172,172);
+    line-height:30px;
+    text-transform:capitalize;
+}
+.weather-data{
+    display:flex;
+    justify-content:space-between;
+}
+.weather-app-icon{
+    height:80px;
+    width:80px;
+    line-height:20px;
+    padding-bottom:10px;
+    margin-top:3px;
+}
+.weather-app-temperature{
+    font-size:80px;
+    margin-left:10px;
+    font-weight:bold;
+}
+.weather-app-unit{
+    margin-top:16px;
+    font-size:28px;
+}
+.Humidity{
+    color:rgb(123, 3, 123);
+    font-weight:bold;
+}
+.form-input{
+    text-decoration:solid;
+    border:none;
+    width:70%;
+    border-color:blueviolet;
+    border-radius:5px;
+    font-size:20px;
+    padding:10px 15px;
+}
+.form-button{
+    border:none;
+    background-color:rgb(123,3,123);
+    color:whitesmoke;
+    padding:10px 15px;
+    font-size:20px;
+    text-transfrom:uppercase;
+    margin-left:5px;
+    border-radius:9px;
+}
+footer{
+    padding:0 0 10px 0;
+    border-top:5px solid rgb(175,172,172);
+    text-align:center;
+    color:rgba(0,0,0,0.5);
+    font-size:13px;
+}
+
+    </style>
+   
+</head>
+<body>
+    <div class="weather-app">
+        <header>
+            <div>
+                <h2>Welcome to our Weather application</h2>
+            </div>
+        </header>
+
+        <main>
+            <div>
+                <form action="" class="search-form" id="search-form">
+                    <input type="search" name="city" id="city-name" placeholder="Enter city name" required class="form-input">
+                    <button type="submit" class="form-button">Search</button>
+                </form>
+            </div>
+            <div class="weather-data">
+                <h3>Paris</h3>
+                <!--
+                <h3>☀ 18
+                    <strong>℃</strong>
+                </h3>
+                -->
+                <div class="weather-app-temperature-container">
+                    <div class="" id="weather-app-icon">
+                        <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png" alt="not loading" class="weather-app-icon">
+                    </div>
+                    <div class="weather-app-temperature" id="currenttemperaturevalue">12</div>
+                    <div class="weather-app-unit">℃</div>
+                </div>
+            </div>
+            <div>
+                <p>
+                    <span id="currenttime">Tuesday 
+                        14.40 
+                        ,
+                    </span>
+                    <span id="weatherdescription">
+                        scattered clouds
+                    </span>
+                </br>
+                Humidity:
+                <span id="Humidity" class="Humidity">
+                    66
+                </span>
+                , Wind Speed:
+                <span id="windspeed">
+                    4.3
+                </span>
+                </p>
+            </div>
+        </main>
+        <footer>
+            <div>
+                Coded by <a href="https://github.com/Sherlyn" target="_blank">Sherlyn Kalondu</a>
+                and is on
+                <a href="https://github.com/Rennish/Week7-Weather-API" target="_blank">Github</a>
+                and hosted by
+                <a href="https://rennishweatherapp.netlify.app/" target="_blank">Netlify.</a>
+            </br>
+            The design was done using <a href="https://www.figma.com/" target="_blank">Figma</a>
+            </div>
+        </footer>
+    </div>
+    <script>
+        function refreshWeather(currentweather){
+    //document.write(currentweather.data.temperature.current)
+    //let currentTemperature= Math.round(currentweather.data.temperature.current);
+    //document.write(currentTemperature);
+
+    //display the temperature
+    let currenttemperaturevalue=document.querySelector("#currenttemperaturevalue");
+
+    //currenttemperaturevalue.innerHTML=currentTemperature;
+    //this is a shorter way of doing the exact same thing the commented codes do.
+    currenttemperaturevalue.innerHTML=Math.round(currentweather.data.temperature.current);
+
+    //display the weather description
+    let weatherdescription=document.querySelector("#weatherdescription");
+    weatherdescription.innerHTML=currentweather.data.condition.description;
+
+    let currentWeatherIcon=document.querySelector("#weather-app-icon");
+    currentWeatherIcon.innerHTML=
+    <img src="${currentweather.data.condition.icon_url}" 
+         alt="not loading" 
+         class="weather-app-icon"/>';
+
+    console.log(currentweather.data);
+
+    //display the Humidity
+    let humidity= document.querySelector("#Humidity");
+    humidity.innerHTML='${currentweather.data.temperature.humidity}%';
+
+    //display the wind Speed
+    let windspeed=document.querySelector("#windspeed");
+    windspeed.innerHTML='${currentweather.data.wind.speed} knots';
+
+    //display day and time
+    let currentTime=document.querySelector("#currenttime");
+    let date=new Date(currentweather.data.time*1000);
+    currentTime.innerHTML=formalDate(date);
+}
+function formalDate(date){
+    let minutes=date.getMinutes();
+    let hours=date.getHours();
+    let days=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
+
+    let day=days[date.getDay()];
+
+    if(minutes<10){
+        minutes='0${minutes}';
+    }
+    return '${day}${hours}:${minutes}';
+}
+function searchCity(currentcityName){
+    let apiKey="73dof19a030ad06t05b21e8521b4860f";
+    let apiurl="https://api.shecodes.io/weather/v1/current?query=${currentcityName}&key=${apiKey}";
+    //console.log(currentcityName);
+    axios.get(apiurl).then(refreshWeather);
+    //console.log(apiurl);
+}
+function displayCity(event){
+    event.preventDefault();
+
+    let cityName=document.querySelector("#city-name");
+    let cityNamedisplayed=document.querySelector("h3");
+    cityNamedisplayed.innerHTML=cityName.value;
+
+    currentcityname=cityName.value
+    searchCity(currentcityname);
+}
+let searchForm=document.querySelector("#search-form");
+searchForm.addEventListener("submit",displayCity);
+    </script>
+    
+</body>
+</html>
